@@ -9,11 +9,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   if Vagrant.has_plugin?("vagrant-vbguest") then
     config.vbguest.auto_update = true
   end
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "kraeml/xenial-64-de"
   config.vm.network :private_network, ip: "192.168.68.21"
   config.vm.hostname = "wordpress.rdf.loc"
   # Falls vbguest-plugin bitte Guest nachladen
-  if Vagrant.has_plugin?("vagrant-hostupdater") then
+  if Vagrant.has_plugin?("vagrant-hostsupdater") then
     config.hostsupdater.aliases = ["alias.testing.de", "alias2.somedomain.com"]
   end
   config.vm.provision :shell, :path => "install.sh"
