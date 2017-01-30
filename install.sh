@@ -16,8 +16,10 @@ MYSQL_ROOT_PASSWORD="root"
 # We are going to install nginx, PHP and MySQL.
 # By default, mysql-server is going to ask for the root password and we automate that with debconf-set-selections.
 echo "Install software"
+sleep 45 
 echo "mysql-server-5.7 mysql-server/root_password password $MYSQL_ROOT_PASSWORD" | sudo debconf-set-selections
 echo "mysql-server-5.7 mysql-server/root_password_again password $MYSQL_ROOT_PASSWORD" | sudo debconf-set-selections
+sudo apt-get update
 sudo apt install -y nginx php php-mysql php-curl php-gd mysql-server
 
 # Configure MySQL
